@@ -1,14 +1,14 @@
 'use strict';
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const apiRoutes = require('./routes/api.js');
+const fccTestingRoutes = require('./routes/fcctesting.js');
+const runner = require('./test-runner');
+const PORT = process.env.PORT || 3000;
 
-var express     = require('express');
-var bodyParser  = require('body-parser');
-var cors        = require('cors');
-
-var apiRoutes         = require('./routes/api.js');
-var fccTestingRoutes  = require('./routes/fcctesting.js');
-var runner            = require('./test-runner');
-
-var app = express();
+const app = express();
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
@@ -37,8 +37,8 @@ app.use(function(req, res, next) {
 });
 
 //Start our server and tests!
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Listening on port " + process.env.PORT);
+app.listen(PORT, function () {
+  console.log("Listening on port " + PORT);
   if(process.env.NODE_ENV==='test') {
     console.log('Running Tests...');
     setTimeout(function () {
