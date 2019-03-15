@@ -1,0 +1,35 @@
+{
+	"name": "fcc-personal-library",
+	"version": "0.0.1",
+	"description": "Personal Library project for the freeCodeCamp Information Security and Quality Assurance Certification",
+	"author": "Brian Marquis",
+	"private": true,
+	"main": "server.js",
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"engines": {
+		"node": "10.x"
+	},
+	"keywords": [
+		"node",
+		"express"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"chai": "^4.2.0",
+		"chai-http": "^4.2.1",
+		"cors": "^2.8.5",
+		"express": "^4.16.4",
+		"helmet": "^3.15.1",
+		"mocha": "^6.0.2",
+		"mongodb": "^3.1.13",
+		"mongoose": "^5.4.19",
+		"zombie": "^6.1.4"
+	},
+	"devDependencies": {
+		"dotenv": "^6.2.0",
+		"nodemon": "^1.18.10"
+	}
+}
