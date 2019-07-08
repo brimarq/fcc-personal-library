@@ -1,6 +1,7 @@
 'use strict';
 require('dotenv').config();
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const apiRoutes = require('./routes/api.js');
@@ -9,6 +10,11 @@ const runner = require('./test-runner');
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+app.use(helmet({
+  noCache: true,
+  hidePoweredBy: { setTo: 'PHP 4.2.0' }
+}));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
