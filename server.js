@@ -11,6 +11,13 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+//Set up mongoose connection
+const mongoose = require('mongoose');
+const mongoDB = process.env.MONGODB_URI;
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 app.use(helmet({
   noCache: true,
   hidePoweredBy: { setTo: 'PHP 4.2.0' }
