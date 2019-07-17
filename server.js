@@ -1,5 +1,6 @@
 'use strict';
-require('dotenv').config();
+// Require dotenv for local dev, but not on glitch.com
+if (!process.env.PROJECT_DOMAIN) require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
