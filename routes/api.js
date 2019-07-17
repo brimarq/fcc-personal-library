@@ -13,7 +13,7 @@ const bookController = require('../controllers/bookController');
 module.exports = function (app) {
 
   app.route('/api/books')
-    .get([bookController.getAllBooks])
+    .get(bookController.getAllBooks)
     .post(bookController.addOneBook)
     .delete(bookController.deleteAllBooks);
 
