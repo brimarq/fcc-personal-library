@@ -8,8 +8,4 @@ const BookSchema = new Schema(
   }
 );
 
-BookSchema.virtual('commentcount').get(function() {
-  return this.comments.length;
-});
-
 module.exports = mongoose.model('Book', BookSchema);
