@@ -34,8 +34,9 @@ suite('Functional Tests', function() {
   });
 
   suiteTeardown(function () {
-    Book.deleteMany({title: {$eq: testBookTitle}}, err => console.log(err ? err : '*** SUITE TEARDOWN COMPLETED ***'));
+    Book.deleteMany({title: {$eq: testBookTitle}}, err => {if (err) {throw err;}});
   });
+  
 
   /*
   * ----[EXAMPLE TEST]----
@@ -84,9 +85,9 @@ suite('Functional Tests', function() {
         chai.request(server)
         .post('/api/books')
         .send({title: " "})
-        .end(function(err, res){
-          assert.equal(res.status, 400); 
-          assert.equal(res.text, 'missing title');                                                                      
+        .end(function(err, res){ 
+          assert.equal(res.status, 200);
+          assert.equal(res.text, 'missing title');                        
           done();
         });
       });
@@ -117,7 +118,7 @@ suite('Functional Tests', function() {
         chai.request(server)
         .get('/api/books/1234')
         .end(function(err, res){
-          assert.equal(res.status, 400); 
+          assert.equal(res.status, 200);
           assert.equal(res.text, 'no book exists');                          
           done();
         });
